@@ -1,0 +1,42 @@
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Adobe files to ignore
+*.psd
+*.ai
+
+# Logs
+*.log
+
+# Compiled source
+*.dll
+*.exe
+*.o
+*.so
+
+# OS generated files
+*.DS_Store
+*.swp
+*.out
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+/.idea
+Homestead.json
+Homestead.yaml
+.env
+.phpunit.result.cache
+
+# phpstorm project files
+.idea
+
+# Visual Studio Code Project files
+.vscode
