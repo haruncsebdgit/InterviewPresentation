@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <title>Client-To-Microservice Communication</title>
+        <link rel="stylesheet" href="assets/css/lightbox.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+        <div class="container" style="width: 1024px; max-width: 1024px">
+
+            <div class="header">
+                <div class="profile-picture">
+                    <img src="assets/images/picture.png" />
+                </div>
+                <div class="header-content">
+                    <h2>Mohammad Harun-Or-Rashid</h2>
+                    <p>
+                        165/1, East Kafrul (1st Floor) <br/>
+                        Dhaka Cantt. Dhaka 1207<br/>
+                        01737698398<br/>
+                        harun.zend@gmail.com
+                    </p>
+                </div>
+                <div class="zend-logo">
+                    <a href="http://www.zend.com/en/yellow-pages/ZEND025901" target="_blank">
+                        <img src="assets/images/zend.png" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="content">
+                <h1>Clients -> API Gateway -> Microservice Communication</h1>
+
+                <br>
+                <h2>1. Web Client (React) and Mobile Client (Android Native)</h2>
+                <div class="image-gallery">
+                    <div class="image-item">
+                        <a href="assets/images/Browser/EmployeeRequest.jpg" data-lightbox="client-microservice" data-title="HTTP Request">
+                            <img src="assets/images/Browser/EmployeeRequest.jpg" alt="" />
+                        </a>
+                        <p>HTTP Request</p>
+                    </div>
+                    <div class="image-item">
+                        <a href="assets/images/Browser/EmployeeResponse.jpg" data-lightbox="client-microservice" data-title="HTTP Response">
+                            <img src="assets/images/Browser/EmployeeResponse.jpg" alt="" />
+                        </a>
+                        <p>HTTP Response</p>
+                    </div>
+                    <div class="image-item">
+                        <a href="assets/images/Browser/DelarMobile.jpg" data-lightbox="client-microservice" data-title="Mobile">
+                            <img src="assets/images/Browser/DelarMobile.jpg" alt="" />
+                        </a>
+                        <p>Mobile</p>
+                    </div>
+                </div>
+                <div class="document">
+                    <ul>
+                        <li>Client will send HTTP request to API Gateway.</li>
+                        <li>Access token (JWT) Appended through Header’s Bearer Token</li>
+                    </ul>
+                </div>
+
+                <br>
+                <h2>2. API Gateway Microservice (Laravel)</h2>
+                <div class="image-gallery">
+                    <div class="image-item">
+                        <a href="assets/images/Api/Routes.jpg" data-lightbox="api-microservice" data-title="Routes">
+                            <img src="assets/images/Api/Routes.jpg" alt="" />
+                        </a>
+                        <p>Routes</p>
+                    </div>
+                    <div class="image-item">
+                        <a href="assets/images/Api/ApiGetwayController.jpg" data-lightbox="api-microservice" data-title="Controller">
+                            <img src="assets/images/Api/ApiGetwayController.jpg" alt="" />
+                        </a>
+                        <p>Controller</p>
+                    </div>
+                    <div class="image-item">
+                        <a href="assets/images/Api/HttpClientService.jpg" data-lightbox="api-microservice" data-title="HttpClientService">
+                            <img src="assets/images/Api/HttpClientService.jpg" alt="" />
+                        </a>
+                        <p>HttpClientService</p>
+                    </div>
+                    <div class="image-item">
+                        <a href="assets/images/Api/PermissionMiddleware.jpg" data-lightbox="api-microservice" data-title="Middleware">
+                            <img src="assets/images/Api/PermissionMiddleware.jpg" alt="" />
+                        </a>
+                        <p>Middleware</p>
+                    </div>
+                </div>
+                <div class="document">
+                    <p><b>Routes</b></p>
+                    <ul>
+                        <li>All HTTP request routes to ApiGatewayController.php relevant method</li>
+                    </ul>
+
+                    <p><b>Check Permission</b></p>
+                    <ul>
+                        <li>PermissionMiddleware.php send HTTP request to Auth server to check permission</li>
+                    </ul>
+
+                    <p><b>Controller</b></p>
+                    <ul>
+                        <li>Controller Constructor parse query params and mapping Microservice base URL</li>
+                        <li>Request type GET, POST, PUT, DELETE handle by corresponding function</li>
+                    </ul>
+
+                    <p><b>Http Request Handle</b></p>
+                    <ul>
+                        <li>Used Laravel’s GuzzleHttp Library to call HTTP service</li>
+                        <li>Created HttpClientService.php to handle all Http request</li>
+                        <li>HttpClientService.php has try/catch block to handle success and error response</li>
+                    </ul>
+
+                </div>
+
+                <br>
+                <h2>3. Auth Microservice (Laravel)</h2>
+                <div class="image-gallery">
+                    <div class="image-item">
+                        <a href="assets/images/Auth/PermissionController.jpg" data-lightbox="auth-microservice" data-title="Permission Controller">
+                            <img src="assets/images/Auth/PermissionController.jpg" alt="" />
+                        </a>
+                        <p>Permission Controller</p>
+                    </div>
+                </div>
+
+                <div class="document">
+                    <p><b>Routes</b></p>
+                    <ul>
+                        <li>HTTP Request routes to EmployeeController.php relevant function</li>
+                    </ul>
+
+                    <p><b>Check Permission</b></p>
+                    <ul>
+                        <li>IpMiddleware.php is used to accept request from only hosting server IP.</li>
+                    </ul>
+
+                    <p><b>Controller</b></p>
+                    <ul>
+                        <li>Used PermissionController.php to check Permission</li>
+                        <li>We created a role base flexible permission module. To permission Endpoint, Any Button, Any Tab, Any Navigation.</li>
+                    </ul>
+                </div>
+
+                <br>
+                <h2>4. Scm Microservice (Laravel)</h2>
+                <div class="image-gallery">
+                    <div class="image-item">
+                        <a href="assets/images/Scm/EmployeeController.jpg" data-lightbox="scm-microservice" data-title="Employee Controller">
+                            <img src="assets/images/Scm/EmployeeController.jpg" alt="" />
+                        </a>
+                        <p>Employee Controller</p>
+                    </div>
+                    <div class="image-item">
+                        <a href="assets/images/Scm/ControllerTraits.jpg" data-lightbox="scm-microservice" data-title="Traits Listing">
+                            <img src="assets/images/Scm/ControllerTraits.jpg" alt="" />
+                        </a>
+                        <p>Traits Listing</p>
+                    </div>
+                    <div class="image-item">
+                        <a href="assets/images/Scm/TraitsRestStore.jpg" data-lightbox="scm-microservice" data-title="Traits Store">
+                            <img src="assets/images/Scm/TraitsRestStore.jpg" alt="" />
+                        </a>
+                        <p>Traits Store</p>
+                    </div>
+                    <div class="image-item">
+                        <a href="assets/images/Scm/EmployeeResource.jpg" data-lightbox="scm-microservice" data-title="Employee Resource">
+                            <img src="assets/images/Scm/EmployeeResource.jpg" alt="" />
+                        </a>
+                        <p>Employee Resource</p>
+                    </div>
+                </div>
+
+                <div class="document">
+                    <p><b>Routes</b></p>
+                    <ul>
+                        <li>HTTP Request routes to EmployeeController.php</li>
+                    </ul>
+
+                    <p><b>Check Permission</b></p>
+                    <ul>
+                        <li>IpMiddleware.php is used to accept request from only hosting server IP</li>
+                    </ul>
+
+                    <p><b>Controller</b></p>
+                    <ul>
+                        <li>Used Trait for handle index, show, store, update, destroy and bulk controller functions</li>
+                        <li>Mapping Repository, Validator and Resource Class for Trait.</li>
+                        <li>Response and customize, append throw EmployeeResource.php</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="assets/js/lightbox-plus-jquery.min.js"></script>
+    </body>
+</html>

@@ -69,3 +69,22 @@ ul li {
     padding-top: 10px;
 }
 .section {margin-top: 20px}
+
+.image-gallery {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-gallery .image-item{
+    position: relative;
+    float: left;
+    margin: 5px 15px 15px 15px;
+}
+.image-gallery .image-item img {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #000;
+}
+.document ul {
+    margin-bottom: 10px;
+}

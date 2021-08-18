@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <title>Microservice-To-Microservice Secure communication</title>
+        <link rel="stylesheet" href="assets/css/lightbox.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+        <div class="container" style="width: 1024px; max-width: 1024px">
+            <div class="header">
+                <div class="profile-picture">
+                    <img src="assets/images/picture.png" />
+                </div>
+                <div class="header-content">
+                    <h2>Mohammad Harun-Or-Rashid</h2>
+                    <p>
+                        165/1, East Kafrul (1st Floor) <br/>
+                        Dhaka Cantt. Dhaka 1207<br/>
+                        01737698398<br/>
+                        harun.zend@gmail.com
+                    </p>
+                </div>
+                <div class="zend-logo">
+                    <a href="http://www.zend.com/en/yellow-pages/ZEND025901" target="_blank">
+                        <img src="assets/images/zend.png" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="content">
+                <h1>Direct Microservice-To-Microservice Secure Communication</h1>
+                <br>
+
+                <h2>1. Scm Microservice (Laravel)</h2>
+                <div class="image-gallery">
+                    <div class="image-item">
+                        <a href="assets/images/Scm/LocationApi.jpg" data-lightbox="scm-microservice" data-title="Call Location API Service">
+                            <img src="assets/images/Scm/LocationApi.jpg" alt="" />
+                        </a>
+                        <p>Call Location API Service</p>
+                    </div>
+                    <div class="image-item">
+                        <a href="assets/images/Scm/LocationApiService.jpg" data-lightbox="scm-microservice" data-title="Location Api Service">
+                            <img src="assets/images/Scm/LocationApiService.jpg" alt="" />
+                        </a>
+                        <p>Location Api Service</p>
+                    </div>
+                </div>
+
+                <div class="document">
+                    <p><b>Call Location API Service</b></p>
+                    <ul>
+                        <li>Here called Location Microservice  for Location List</li>
+                    </ul>
+
+                    <p><b>Api Service File</b></p>
+                    <ul>
+                        <li>Every resource has separate file to handle index, show, store, update, destroy and bulk those endpoint</li>
+                        <li>Here we used LocationApiService.php to handle API request</li>
+                    </ul>
+
+                    <p><b>Http Request Handle</b></p>
+                    <ul>
+                        <li>Used Laravel’s GuzzleHttp Library to call HTTP service</li>
+                        <li>Created HttpClientService.php to handle all HTTP request (GET, POST, PUT, DELETE)</li>
+                    </ul>
+                </div>
+
+                <br>
+                <h2>2. Core Microservice (Laravel)</h2>
+                <div class="image-gallery">
+                    <div class="image-item">
+                        <a href="assets/images/Core/IpMiddleware.jpg" data-lightbox="scm-microservice" data-title="IpMiddleware">
+                            <img src="assets/images/Core/IpMiddleware.jpg" alt="" />
+                        </a>
+                        <p>IpMiddleware</p>
+                    </div>
+                    <div class="image-item">
+                        <a href="assets/images/Core/LocationController.jpg" data-lightbox="scm-microservice" data-title="Location Controller">
+                            <img src="assets/images/Core/LocationController.jpg" alt="" />
+                        </a>
+                        <p>Location Controller</p>
+                    </div>
+                    <div class="image-item">
+                        <a href="assets/images/Scm/ControllerTraits.jpg" data-lightbox="scm-microservice" data-title="Traits">
+                            <img src="assets/images/Scm/ControllerTraits.jpg" alt="" />
+                        </a>
+                        <p>Traits</p>
+                    </div>
+                    <div class="image-item">
+                        <a href="assets/images/Core/LocationResource.jpg" data-lightbox="scm-microservice" data-title="Location Resource">
+                            <img src="assets/images/Core/LocationResource.jpg" alt="" />
+                        </a>
+                        <p>Location Resource</p>
+                    </div>
+                </div>
+
+                <div class="document">
+                    <p><b>Routes</b></p>
+                    <ul>
+                        <li>Routes Request to LocationController.php</li>
+                    </ul>
+
+                    <p><b>Check Permission</b></p>
+                    <ul>
+                        <li>IpMiddleware.php is used to accept request from only hosting server IP</li>
+                    </ul>
+
+                    <p><b>Controller</b></p>
+                    <ul>
+                        <li>LocationController.php index function process data and return response</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <script src="assets/js/lightbox-plus-jquery.min.js"></script>
+    </body>
+</html>
